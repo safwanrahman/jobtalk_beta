@@ -1,0 +1,24 @@
+{% load bootstrap %}
+
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <title>Bootstrap form example</title>
+
+</head>
+
+{% block content %}
+    <h2>Sign up</h2>
+    <div class="container">
+        <form role="form" method="POST">
+        <legend>Sign Up</legend>
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
+
+        </form>
+    </div>
+{% endblock %}
