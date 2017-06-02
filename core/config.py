@@ -19,10 +19,14 @@ class ResearchFields(object):
 class Genders(object):
     MALE = 0
     FEMALE = 1
+    NON_CONFIRMING = 2
+    OTHER = 3
 
     CHOICES = (
         (MALE, "Male"),
-        (FEMALE, "Female")
+        (FEMALE, "Female"),
+        (NON_CONFIRMING, "Non-Conforming"),
+        (OTHER, "Other")
     )
 
 
