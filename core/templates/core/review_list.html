@@ -1,36 +1,30 @@
 {% block content %}
     <h1>Reviews</h1>
-    {% for review in review_list %}
-    <h2>Review {{ review.pk }}</h2>
-    <ul>
-        <li>Institution: {{ review.institution }}</li>
-        <li>Department: {{ review.department }}</li>
-        <li>Position: {{ review.position }}</li>
-        <li>Year: {{ review.year }}</li>
-    </ul>
-    <h3>Reviewer Experience</h3>
-    <ul>
-        <li>Supported: {{ review.supported }}</li>
-        <li>Collaborative: {{ review.collaborative }}</li>
-        <li>Tenure rate: {{ review.tenue_rate }}</li>
-        <li>Gender ratio: {{ review.gender_ratio }}</li>
-        <li>Child-friendly: {{ review.children }}</li>
-        <li>Felt supported: {{ review.supported }}</li>
-        <li>HR experience: {{ review.hr_text }}</li>
-        <li>Satisfaction: {{ review.satisfaction }}</li>
-        <li>Comment: {{ review.comment }}</li>
-        <li>Salary: {{ review.annual_salary }}</li>
-        <li>Travel allowance: {{ review.travel_allowance }}</li>
-        <li>Pension: {{ review.pension }}</li>
-        <li>Quality: {{ review.quality }}</li>
-    </ul>
-    <h3>Reviewer Details</h3>
-    <ul>
-        <li>Experience: {{ review.experience }}</li>
-        <li>Gender: {{ review.institution }}</li>
-        <li>Ethnicity: {{ review.comment }}</li>
-    </ul>
-    {% endfor %}
+    {% if review_list %}
+        <table style="width:50%;text-align: center">
+        <tr>
+            <th>Review Number</th>
+            <th>Institution</th>
+            <th>Department</th>
+            <th>Position</th>
+            <th>Year</th>
+        </tr>
+        {% for review in review_list %}
+            <tr>
+                <td>
+                    <a href="{{ review.get_absolute_url }}">
+                        Review {{ review.pk }}
+                    </a>
+                </td>
+                <td>{{ review.institution }}</td>
+                <td>{{ review.get_department_display }}</td>
+                <td>{{ review.get_position_display }}</td>
+                <td>{{ review.year }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <p>There are no reviews.</p>
+    {% endif %}
 {% endblock %}
 
 

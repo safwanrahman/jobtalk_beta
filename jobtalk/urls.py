@@ -23,7 +23,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', UserRegistration.as_view(), name='user-registration'),
     url(r'^reviews$', ReviewList.as_view(), name='review-list'),
+    url(r'^reviews/$', ReviewList.as_view(), name='review-list'),
     url(r'^reviews/submit$', ReviewSubmission.as_view(), name='review-submission'),
-    url(r'^reviews/(?P<pk>[0-9]+)/$', ReviewDetail.as_view(), name='review-list'),
+    url(r'^reviews/(?P<pk>[0-9]+)/$', ReviewDetail.as_view(), name='review-detail'),
     url(r'success/', successful, name='successful'),
 ]
