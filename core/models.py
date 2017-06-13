@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 from core.config import Positions, ResearchFields, Genders, Ethnicity, Departments
@@ -41,3 +42,6 @@ class Review(models.Model):
     travel_allowance = models.IntegerField()
     pension = models.IntegerField()
     quality = models.IntegerField()
+
+    def get_absolute_url(self):
+        return reverse('review-detail', args=[self.pk])
