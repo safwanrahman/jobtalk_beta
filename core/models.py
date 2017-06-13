@@ -44,4 +44,4 @@ class Review(models.Model):
     quality = models.IntegerField()
 
     def get_absolute_url(self):
-        return reverse('review-detail', args=[str(self.pk)])
+        return reverse('review-detail', args=[self.pk])
