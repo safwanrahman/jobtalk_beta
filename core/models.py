@@ -10,15 +10,35 @@ from core.config import Positions, ResearchFields, Genders, Ethnicity, Departmen
 
 
 class User(AbstractUser):
-    institution = models.CharField(max_length=250)
-    position = models.IntegerField(choices=Positions.CHOICES)
-    research_field = models.IntegerField(choices=ResearchFields.CHOICES)
-    research_info = models.TextField()
-    career_vision = models.TextField()
-    workplace_info = models.TextField()
-    learn_about = models.TextField()
-    gender = models.IntegerField(choices=Genders.CHOICES, verbose_name='How do you identify')
-    ethnicity = models.IntegerField(choices=Ethnicity.CHOICES)
+    institution = models.CharField(max_length=250, 
+        verbose_name="What is your current institution?",
+    )
+    position = models.IntegerField(choices=Positions.CHOICES,
+        verbose_name="What is your current position?",
+    )
+    research_field = models.IntegerField(choices=ResearchFields.CHOICES,
+        verbose_name="What is your field of research?",
+    )
+    research_info = models.TextField(
+        verbose_name="Share more about your research: ",
+    )
+    career_vision = models.TextField(
+        verbose_name=("What is your vision for your career? "
+            "Where do you want to bein 5 years, "
+            "what questions do you have, etc.?"),
+    )
+    workplace_info = models.TextField(
+        verbose_name="What would be your ideal workplace?",
+    )
+    learn_about = models.TextField(
+        verbose_name="I'm interested in learning more about...",
+    )
+    gender = models.IntegerField(choices=Genders.CHOICES, 
+        verbose_name='Gender',
+    )
+    ethnicity = models.IntegerField(choices=Ethnicity.CHOICES,
+        verbose_name='Ethnicity',
+    )
 
 
 class Review(models.Model):
