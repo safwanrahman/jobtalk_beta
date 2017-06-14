@@ -1,0 +1,31 @@
+{% block content %}
+    <h1>Reviews</h1>
+    {% if review_list %}
+        <table style="width:50%;text-align: center">
+        <tr>
+            <th>Review Number</th>
+            <th>Institution</th>
+            <th>Department</th>
+            <th>Position</th>
+            <th>Year</th>
+        </tr>
+        {% for review in review_list %}
+            <tr>
+                <td>
+                    <a href="{{ review.get_absolute_url }}">
+                        Review {{ review.pk }}
+                    </a>
+                </td>
+                <td>{{ review.institution }}</td>
+                <td>{{ review.get_department_display }}</td>
+                <td>{{ review.get_position_display }}</td>
+                <td>{{ review.year }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <p>There are no reviews.</p>
+    {% endif %}
+{% endblock %}
+
+
+    
