@@ -4,6 +4,7 @@ from django.forms import ModelForm
 from core.models import User, Review
 
 
+## Multiple forms for UserRegistration to allow pagination via a wizard
 class UserRegistrationForm1(ModelForm):
     """User Registration form, page 1"""
     class Meta:
@@ -31,8 +32,27 @@ class UserRegistrationForm3(ModelForm):
         )
 
 
-class ReviewForm(ModelForm):
-
+## Multiple forms for ReviewSubmission to allow pagination via a wizard
+class ReviewSubmissionForm1(ModelForm):
+    """Review Submission form, page 1"""
     class Meta:
         model = Review
-        fields = '__all__'
+        fields = (
+            'institution', 'position', 'research_field', 'research_info',
+        )
+
+class ReviewSubmissionForm1(ModelForm):
+    """Review Submission form, page 1"""
+    class Meta:
+        model = Review
+        fields = (
+            'institution', 'position', 'research_field', 'research_info',
+        )
+
+class ReviewSubmissionForm1(ModelForm):
+    """Review Submission form, page 1"""
+    class Meta:
+        model = Review
+        fields = (
+            'institution', 'position', 'research_field', 'research_info',
+        )
