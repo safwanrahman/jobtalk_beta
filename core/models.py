@@ -6,7 +6,9 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
-from core.config import Positions, ResearchFields, Genders, Ethnicity, Departments
+from core.config import (Positions, ResearchFields, Genders, Ethnicity, 
+    Departments, Childcare,
+)
 
 
 class User(AbstractUser):
@@ -66,61 +68,100 @@ class Review(models.Model):
     )
     department = models.IntegerField(choices=Departments.CHOICES,
         verbose_name='Department',
+        null=True, blank=True,
     )
     position = models.IntegerField(choices=Positions.CHOICES,
         verbose_name='What is (or was) your position at that institution?',
+        null=True, blank=True,
     )
     year = models.IntegerField(
        verbose_name='What year did your position begin?',
+       null=True, blank=True,
     )
     experience = models.TextField(
         verbose_name='Describe your general experience',
+        blank=True,
     )
     
     # User's identity
     gender = models.IntegerField(choices=Genders.CHOICES, 
         verbose_name='Gender',
+        null=True, blank=True,
     )
     ethnicity = models.IntegerField(choices=Ethnicity.CHOICES,
         verbose_name='Ethnicity',
+        null=True, blank=True,
     )
     
     # Atmosphere
     supported = models.IntegerField(
-        verbose_name='Do (or did) you feel supported?'
+        verbose_name='How supported did you feel (1-10)?',
+        null=True, blank=True,
     )
     collaborative = models.NullBooleanField(blank=True,
-        verbose_name='Did you feel this is (or was) a collaborative position?',
+        verbose_name='Was it collaborative?',
     )
     tenue_rate = models.IntegerField(
-        verbose_name='Estimate tenure rate for new professors',
+        verbose_name='Estimate tenure rate',
+        null=True, blank=True,
     )
     gender_ratio = models.IntegerField(
         verbose_name='Estimate gender ratio (% women faculty)',
+        null=True, blank=True,
     )
-    children = models.IntegerField(blank=True, null=True,
-        verbose_name='Did you have children (during your experience here)?'
+    children = models.NullBooleanField(blank=True,
+        verbose_name='Do you have children?'
     )
     supported = models.IntegerField(
-        verbose_name='Do you feel supported?'
+        verbose_name='How supportive was it of having children (1-10)?',
+        null=True, blank=True,
     )
     hr_text = models.TextField(
         verbose_name='Have you had to deal with HR and how did they handle it?',
+        blank=True,
     )
     satisfaction = models.IntegerField(
-        verbose_name='General satisfaction (1-10)'
+        verbose_name='General satisfaction (1-10)',
+        null=True, blank=True,
     )
     comment = models.TextField(
         verbose_name='Any additional comments?',
+        blank=True,
     )
     
     # Compensation and benefits
     annual_salary = models.IntegerField(
-        verbose_name='Annual salary (USD)'
+        verbose_name='Annual salary (USD / year)',
+        null=True, blank=True,
     )
-    travel_allowance = models.IntegerField()
-    pension = models.IntegerField()
-    quality = models.IntegerField()
+    travel_allowance = models.IntegerField(
+        verbose_name='Travel allowance (USD / year)',
+        null=True, blank=True,    
+    )
+    pension = models.IntegerField(
+        verbose_name='Pension/401K matching (USD / year)',
+        null=True, blank=True,    
+    )
+    parental_leave = models.IntegerField(
+        verbose_name='Parental leave (weeks)',
+        null=True, blank=True,    
+    )
+    sick_leave = models.IntegerField(
+        verbose_name='Sick leave (weeks)',
+        null=True, blank=True,    
+    )    
+    childcare_available = models.IntegerField(
+        verbose_name='Childcare available?',
+        choices=Childcare.CHOICES,
+        null=True, blank=True,
+    )
+    childcare_quality = models.IntegerField(
+        verbose_name='Childcare quality (1-10)',
+        null=True, blank=True,    
+    )
+    childcare_onsite = models.NullBooleanField(blank=True,
+        verbose_name='Childcare onsite?',
+    )    
     
     # Workload
     

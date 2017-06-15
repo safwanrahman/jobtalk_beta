@@ -56,5 +56,7 @@ class ReviewSubmissionForm3(ModelForm):
     class Meta:
         model = Review
         fields = (
-            'annual_salary', 'travel_allowance', 'pension', 'quality',
+            'annual_salary', 'travel_allowance', 'pension', 'parental_leave',
+            'sick_leave', 'childcare_available', 'childcare_quality',
+            'childcare_onsite',
         )
