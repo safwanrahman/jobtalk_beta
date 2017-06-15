@@ -14,7 +14,7 @@
 {% block content %}
     <div class="container">
         {% if wizard.steps.step1 == 1 %}
-            <h2>What institution are you reviewing?</h2>
+            <h2>General info</h2>
         {% elif wizard.steps.step1 == 2 %}
             <h2>Atmosphere</h2>
         {% elif wizard.steps.step1 == 3 %}
@@ -41,7 +41,7 @@
             <input type="submit" value="{% trans "continue" %}"/>
         </form>
         
-        {% if wizard.steps.step1 == 3 %}
+        {% if wizard.steps.step1 == 1 %}
             <h3>Why are we asking this?</h3>
             <p>
             There is a long-documented disparity in hiring and compensation
