@@ -34,25 +34,27 @@ class UserRegistrationForm3(ModelForm):
 
 ## Multiple forms for ReviewSubmission to allow pagination via a wizard
 class ReviewSubmissionForm1(ModelForm):
-    """Review Submission form, page 1"""
+    """Review Submission form, page 1 (User info)"""
     class Meta:
         model = Review
         fields = (
-            'institution', 'position', 'research_field', 'research_info',
+            'institution', 'department', 'position', 'year', 'experience',
+            'gender', 'ethnicity',
         )
 
-class ReviewSubmissionForm1(ModelForm):
-    """Review Submission form, page 1"""
+class ReviewSubmissionForm2(ModelForm):
+    """Review Submission form, page 2 (Atmosphere)"""
     class Meta:
         model = Review
         fields = (
-            'institution', 'position', 'research_field', 'research_info',
+            'supported', 'collaborative', 'tenue_rate', 'gender_ratio',
+            'children', 'supported', 'hr_text', 'satisfaction', 'comment',
         )
 
-class ReviewSubmissionForm1(ModelForm):
-    """Review Submission form, page 1"""
+class ReviewSubmissionForm3(ModelForm):
+    """Review Submission form, page 3 (Compensation and Benefits)"""
     class Meta:
         model = Review
         fields = (
-            'institution', 'position', 'research_field', 'research_info',
+            'annual_salary', 'travel_allowance', 'pension', 'quality',
         )
