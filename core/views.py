@@ -25,7 +25,11 @@ class UserRegistrationWizard(CookieWizardView):
     # https://docs.djangoproject.com/en/1.7/ref/contrib/formtools/form-wizard/
     form_list = [UserRegistrationForm1, UserRegistrationForm2,
         UserRegistrationForm3]
-   
+
+    # See https://django-formtools.readthedocs.io/en/latest/wizard.html#wizard-template-for-each-form
+    # for instuctions on using a different template for each step
+    template_name = 'core/user_registration.html'
+    
     def done(self, form_list, **kwargs):
         return render_to_response('core/success.html')
 
