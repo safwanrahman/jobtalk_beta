@@ -17,14 +17,15 @@ from django.conf.urls import url
 from django.contrib import admin
 
 
-from core.views import (UserRegistrationWizard, successful, ReviewSubmission,
-                        ReviewList, ReviewDetail)
+from core.views import (UserRegistrationWizard, successful, 
+    ReviewSubmissionWizard, ReviewList, ReviewDetail,
+)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^users/', UserRegistrationWizard.as_view(), name='user-registration'),
     url(r'^reviews/$', ReviewList.as_view(), name='review-list'),
-    url(r'^reviews/submit/$', ReviewSubmission.as_view(), name='review-submission'),
+    url(r'^reviews/submit/$', ReviewSubmissionWizard.as_view(), name='review-submission'),
     url(r'^reviews/(?P<pk>[0-9]+)/$', ReviewDetail.as_view(), name='review-detail'),
     url(r'success/', successful, name='successful'),
 ]

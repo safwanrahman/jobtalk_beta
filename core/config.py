@@ -79,3 +79,15 @@ class Departments(object):
         (CSE, "CSE"),
         (BBA, "BBA")
     )
+
+
+class Childcare(object):
+    FREE = 0
+    SUBSIDIZED = 1
+    FULL_PRICE = 2
+    
+    CHOICES = (
+        (FREE, "Free"),
+        (SUBSIDIZED, "Subsidized"),
+        (FULL_PRICE, "Full price"),
+    )
