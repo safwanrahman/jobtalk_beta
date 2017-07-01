@@ -33,11 +33,11 @@ class UserRegistrationWizard(CookieWizardView):
     def done(self, form_list, **kwargs):
         """Save info from completed forms to database"""
         # https://stackoverflow.com/questions/14791892/saving-django-formwizard
-        instance = User()
+        data = {}
         for form in form_list:
-            for field, value in form.cleaned_data.iteritems():
-                setattr(instance, field, value)
-        instance.save()
+            data.update(form.cleaned_data)
+        
+        User.objects.create(**data)
         
         return render_to_response('core/success.html')           
 
@@ -58,11 +58,11 @@ class ReviewSubmissionWizard(CookieWizardView):
     def done(self, form_list, **kwargs):
         """Save info from completed forms to database"""
         # https://stackoverflow.com/questions/14791892/saving-django-formwizard
-        instance = Review()
+        data = {}
         for form in form_list:
-            for field, value in form.cleaned_data.iteritems():
-                setattr(instance, field, value)
-        instance.save()
+            data.update(form.cleaned_data)
+        
+        Review.objects.create(**data)
         
         return render_to_response('core/success.html')
 
