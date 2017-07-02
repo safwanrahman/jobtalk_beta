@@ -10,6 +10,7 @@ class UserRegistrationForm1(ModelForm):
     class Meta:
         model = User
         fields = (
+            'username', 'email',
             'institution', 'position', 'research_field', 'research_info',
         )
 
