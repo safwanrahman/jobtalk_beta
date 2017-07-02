@@ -37,7 +37,7 @@ class UserRegistrationWizard(CookieWizardView):
         for form in form_list:
             data.update(form.cleaned_data)
         
-        User.objects.create(**data)
+        User.objects.create_user(**data)
         
         return render_to_response('core/success.html')           
 
